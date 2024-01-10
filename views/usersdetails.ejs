@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>User Details</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .cardAP{
+            width:890px; 
+        }
+    </style>
+</head>
+<body>
+    <h1>User Details</h1>
+    <!-- <ul> 
+        <% users.forEach(user => { %>
+        <li style="display:block;"> 
+            <strong>Name:</strong> <%= user.name %><br>
+            <strong>Mobile:</strong> <%= user.mobile %><br>
+            <strong>Email:</strong> <%= user.email %><br> 
+            <% if (user.image) { %>
+                <img src="/uploads/<%= user.image %>" 
+                    alt="<%= `${user.name}'s Profile` %>" 
+                    class="img-thumbnail" 
+                    style="max-width: 100px; height: 100px;" />
+            <% } %> <br>
+            <a href="/edit/<%= user._id %>">Edit</a> |
+            <a href="/delete/<%= user._id %>">Delete</a>
+        </li>
+        <br>
+        <% }); %>
+    </ul> -->
+
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <div class="cardAP card rounded bg-white border shadow p-4 pb-5 mb-5 ">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Mobile</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach((user, index) => { %>
+                        <tr>
+                            <th scope="row"><%= index + 1 %></th>
+                            <td>
+                                <% if (user.image) { %>
+                                    <img src="/uploads/<%= user.image %>" alt="<%= `${user.name}'s Profile` %>" class="img-thumbnail" style="max-width: 50px; height: 50px;">
+                                <% } %>
+                            </td>
+                            <td><%= user.name %></td>
+                            <td><%= user.mobile %></td>
+                            <td><%= user.email %></td>
+                            <td>
+                                <a href="/edit/<%= user._id %>" class="btn btn-primary btn-sm">Edit</a>
+                                <a href="/delete/<%= user._id %>" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+</body>
+</html>

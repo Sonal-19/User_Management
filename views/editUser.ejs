@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit User Details</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            max-width: 500px;
+            margin: 20px auto;
+            background-color:  #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(97, 10, 10, 0.1);
+        }
+        h1 {
+            color: #3498db;
+            text-align: center;
+        }
+        h2 {
+            color: #333333;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Welcome to ejs view Edit engine</h1>
+    <div class="container">
+        <form method="post" action="/update/<%= user._id %>" enctype="multipart/form-data">
+            <fieldset>
+                <legend style="text-align: center;">USER EDIT FORM</legend>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input class="form-control" type="text" name="name" value="<%= user.name %>">
+                </div>
+                <div class="form-group">
+                    <label for="mobile">Mobile</label>
+                    <input class="form-control" type="text" name="mobile" value="<%= user.mobile %>">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input class="form-control" type="text" name="email" value="<%= user.email %>">
+                </div>
+                <div class="form-group">
+                    <label for="image"> Image</label>
+                    <input type="file" class="form-control" name="image" accept="image/*">
+                    <% if (user.image) { %>
+                        <img src="/uploads/<%= user.image %>" alt="image" style="max-width: 100px;">
+                        <!-- <a href="/unlink/<%= user._id %>">Unlink Image</a> -->
+                    <% } %>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Update</button>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>
